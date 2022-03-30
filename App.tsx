@@ -1,20 +1,47 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from "@react-navigation/native"
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
+import InfoScreen from "./src/screens/InfoScreen"
+import HomeStackNavigator from "./src/navigators/HomeStackNavigator"
+import { Ionicons } from "@expo/vector-icons"
+import MenuDrawerNavigator from "./src/navigators/MenuDrawerNavigator"
+import HomeDrawNavigator from "./src/navigators/HomeDrawNavigator"
 
+const Tab = createBottomTabNavigator()
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+	return (
+		<NavigationContainer>
+			<Tab.Navigator
+				// initialRouteName='HomeStackNavigator'
+				initialRouteName='HomeDrawNavigator'
+				screenOptions={({ route }) => ({
+					headerShown: false,
+					tabBarIcon: ({ focused, color, size }) => {
+						if (route.name === "Home") {
+							return (
+								<Ionicons
+									name={focused ? "ios-information-circle" : "ios-information-circle-outline"}
+									size={size}
+									color={color}
+								/>
+							)
+						} else if (route.name === "Info") {
+							return (
+								<Ionicons
+									name={focused ? "ios-list-circle" : "ios-list"}
+									size={size}
+									color={color}
+								/>
+							)
+						}
+					},
+					tabBarInactiveTintColor: "gray",
+					tabBarActiveTintColor: "tomato",
+				})}
+			>
+				{/* <Tab.Screen name='Home' component={HomeStackNavigator} /> */}
+				<Tab.Screen name='Home' component={HomeDrawNavigator} />
+				<Tab.Screen name='Info' component={InfoScreen} />
+			</Tab.Navigator>
+		</NavigationContainer>
+	)
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
