@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "project20",
-    "slug": "project20",
+    "name": "mobilemovie",
+    "slug": "mobilemovie",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

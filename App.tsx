@@ -5,6 +5,7 @@ import HomeStackNavigator from "./src/navigators/HomeStackNavigator"
 import { Ionicons } from "@expo/vector-icons"
 import MenuDrawerNavigator from "./src/navigators/MenuDrawerNavigator"
 import HomeDrawNavigator from "./src/navigators/HomeDrawNavigator"
+import InfoStackNavigator from "./src/navigators/InfoStackNavigator"
 
 const Tab = createBottomTabNavigator()
 export default function App() {
@@ -24,7 +25,7 @@ export default function App() {
 									color={color}
 								/>
 							)
-						} else if (route.name === "Info") {
+						} else if (route.name === "InfoData") {
 							return (
 								<Ionicons
 									name={focused ? "ios-list-circle" : "ios-list"}
@@ -40,7 +41,7 @@ export default function App() {
 			>
 				{/* <Tab.Screen name='Home' component={HomeStackNavigator} /> */}
 				<Tab.Screen name='Home' component={HomeDrawNavigator} />
-				<Tab.Screen name='Info' component={InfoScreen} />
+				<Tab.Screen name='InfoData' component={InfoStackNavigator} />
 			</Tab.Navigator>
 		</NavigationContainer>
 	)
